@@ -1,0 +1,36 @@
+@import "../../../variables";
+
+.custom-row {
+  background-color: $yellow1;
+  -webkit-box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
+}
+
+.custom-select {
+  background-color: $grey2;
+  color: $grey1;
+  border-style: none;
+}
+.form-control {
+  background-color: $grey2;
+  color: $yellow1;
+  border-style: none;
+}
+
+.form-control::placeholder {
+  color: $grey1;
+}
+
+.btn {
+  background-color: $grey1;
+  color: $yellow1;
+  border-style: none;
+  min-height: 38px;
+}
+
+.input-group-text {
+  background-color: $grey1;
+  color: $yellow1;
+  border-style: none;
+}

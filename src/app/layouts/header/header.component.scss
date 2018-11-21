@@ -1,0 +1,13 @@
+@import "../../../variables";
+
+.navbar {
+  height: 30px;
+  background: $grey1 !important;
+}
+
+.brand {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 40px;
+}
