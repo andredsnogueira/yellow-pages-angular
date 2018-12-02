@@ -1,5 +1,38 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
+  <a class="navbar-brand" [routerLink]="['/']">
+    <img
+      src="https://insightmg.com/wp-content/uploads/2015/12/YP_Insight-Marketing-Group_Marketing-for-Medical-Practices.png"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt=""
+    />
   </a>
+  <form
+    class="form-inline my-2 my-lg-0"
+    *ngIf="!loggedIn"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <input
+      class="form-control mr-sm-2"
+      type="text"
+      name="email"
+      placeholder="Email"
+      aria-label="Email"
+      formControlName="email"
+    />
+    <input
+      class="form-control mr-sm-2"
+      type="password"
+      name="password"
+      placeholder="Password"
+      aria-label="Password"
+      formControlName="password"
+    />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      Login
+    </button>
+  </form>
+  <a [routerLink]="['/admin']" *ngIf="loggedIn">Dashboard</a>
 </nav>

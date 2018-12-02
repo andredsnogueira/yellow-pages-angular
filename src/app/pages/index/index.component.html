@@ -23,9 +23,11 @@
         </div>
         <select class="custom-select" id="inputGroupSelectLocation">
           <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option
+            value="{{ company }}"
+            *ngFor="let company of companiesSelect"
+            >{{ company }}</option
+          >
         </select>
       </div>
     </div>
@@ -87,7 +89,13 @@
   <div class="row">
     <div class="offset-sm-1 col-sm-6">
       <div class="row">
-        <div class="col-sm-12">
+        <div
+          class="col-sm-12"
+          *ngFor="
+            let company of (companies
+              | paginate: { itemsPerPage: 2, currentPage: p })
+          "
+        >
           <div class="card flex-row flex-wrap">
             <div class="card-header my-auto">
               <img
@@ -96,17 +104,22 @@
               />
             </div>
             <div class="card-block pl-4 py-5">
-              <h4 class="card-title">MEO</h4>
-              <p class="card-text">Rua do Sol</p>
-              <p class="card-text">https://www.meo.pt</p>
-              <a href="#" class="btn btn-primary">BUTTON</a>
+              <h4 class="card-title">{{ company.name }}</h4>
+              <p class="card-text">{{ company.address }}</p>
+              <p class="card-text">{{ company.parish }}</p>
+              <a href="tel:{{ company.contact }}"
+                ><i class="fa fa-phone"></i
+              ></a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-4">
-      <div id="mapbox" #mapbox class="h-100 w-100"></div>
+    <div class="col-sm-4"><div id="mapbox" #mapbox></div></div>
+  </div>
+  <div class="row pagination-row justify-content-center">
+    <div class="col-sm-12 text-center">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
   </div>
 </div>

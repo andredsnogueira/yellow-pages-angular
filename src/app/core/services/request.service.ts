@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCompanies() {
-    // TODO: API Endpoint
+    return this.http.get(environment.apiUrl + '/companies');
   }
 
   getMostPopularCompanies() {
     // TODO: API Endpoint
   }
 
-  getCategories() {
-    // TODO: API Endpoint
+  getLocations() {
+    return this.http.get(environment.apiUrl + '/companies/parish');
   }
 }
