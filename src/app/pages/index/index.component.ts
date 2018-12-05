@@ -1,15 +1,7 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  AfterContentInit
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import mapboxgl from 'mapbox-gl';
 import { RequestService } from 'src/app/core/services/request.service';
 import { environment } from 'src/environments/environment';
-import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-index',
@@ -19,10 +11,15 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class IndexComponent implements OnInit {
   companies: any;
   companiesSelect: any;
+  popularCompanies: any;
+  mapMarkers: Array<any> = [];
   p = 1;
   map: mapboxgl.Map;
 
   @ViewChild('mapbox') mapbox: ElementRef;
+  @ViewChild('companyName') companyName: ElementRef;
+  @ViewChild('companyLocation') companyLocation: ElementRef;
+
   constructor(private request: RequestService) {}
 
   ngOnInit() {
@@ -35,12 +32,48 @@ export class IndexComponent implements OnInit {
         center: [-8, 39.6],
         zoom: 6
       });
-      this.companies.forEach(element => {
-        // TODO: Missing backend longitude and latitude information
-        new mapboxgl.Marker().setLngLat([-8, 39.6]).addTo(this.map);
-      });
+      this.drawMapMarkers();
       this.map.addControl(new mapboxgl.NavigationControl());
     });
     this.request.getLocations().subscribe(res => (this.companiesSelect = res));
+    this.request
+      .getMostPopularCompanies()
+      .subscribe(res => (this.popularCompanies = res));
+  }
+
+  drawMapMarkers() {
+    this.removeMapMarkers();
+    this.companies.forEach(element => {
+      // TODO: Missing backend longitude and latitude information
+      if (element.lng && element.lat) {
+        this.mapMarkers.push(
+          new mapboxgl.Marker().setLngLat([-8, 39.6]).addTo(this.map)
+        );
+      }
+    });
+    console.log(this.mapMarkers);
+  }
+
+  removeMapMarkers() {
+    this.mapMarkers.forEach(element => {
+      element.remove();
+    });
+    this.mapMarkers.length = 0;
+  }
+
+  companyPage(id) {
+    this.request.getCompany(id).subscribe();
+  }
+
+  searchCompanies() {
+    this.request
+      .getSearchedCompanies(
+        this.companyName.nativeElement.value,
+        this.companyLocation.nativeElement.value
+      )
+      .subscribe(res => {
+        this.companies = res;
+        this.drawMapMarkers();
+      });
   }
 }

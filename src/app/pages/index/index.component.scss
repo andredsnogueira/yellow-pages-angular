@@ -8,9 +8,9 @@
 
 .custom-row {
   background-color: $yellow1;
-  -webkit-box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
+  // -webkit-box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
+  // -moz-box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
 }
 
 .custom-select {
@@ -58,4 +58,9 @@
 
 .pagination-row {
   margin-top: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: $yellow1;
 }

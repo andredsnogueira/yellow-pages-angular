@@ -1,4 +1,4 @@
-@import "../../../variables";
+@import '../../../variables';
 
 .custom-row {
   background-color: $yellow1;
@@ -33,4 +33,12 @@
   background-color: $grey1;
   color: $yellow1;
   border-style: none;
+}
+
+.table-dark {
+  background-color: $grey1;
+}
+
+tr > th {
+  color: $yellow1;
 }
