@@ -55,10 +55,7 @@
         *ngFor="let company of popularCompanies; let isFirst = first"
         [class.active]="isFirst"
       >
-        <img
-          class="d-block w-100"
-          src="https://www.freewebheaders.com/wordpress/wp-content/gallery/ballooning/ballooning-sport-header-51220-800x200.jpg"
-        />
+        <img class="d-block w-100" src="https://via.placeholder.com/800x200" />
       </div>
     </div>
     <a
@@ -95,10 +92,7 @@
         >
           <div class="card flex-row flex-wrap">
             <div class="card-header my-auto">
-              <img
-                src="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/0017/3922/brand.gif?itok=k3hB7ZPn"
-                alt=""
-              />
+              <img src="https://via.placeholder.com/200x200" alt="" />
             </div>
             <div class="card-block pl-4 py-5">
               <a (click)="companyPage(company.id)"
@@ -106,7 +100,7 @@
               >
               <p class="card-text">{{ company.address }}</p>
               <p class="card-text">
-                {{ company.postalCode }}, {{ company.parish }}
+                {{ company.postalCode }}, {{ company.city }}
               </p>
               <a href="tel:{{ company.contact }}"
                 ><i class="fa fa-phone"></i

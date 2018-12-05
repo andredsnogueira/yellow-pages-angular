@@ -39,15 +39,17 @@ export class IndexComponent implements OnInit {
     this.request
       .getMostPopularCompanies()
       .subscribe(res => (this.popularCompanies = res));
+    console.log(this.popularCompanies);
   }
 
   drawMapMarkers() {
     this.removeMapMarkers();
     this.companies.forEach(element => {
-      // TODO: Missing backend longitude and latitude information
-      if (element.lng && element.lat) {
+      if (element.long && element.lat) {
         this.mapMarkers.push(
-          new mapboxgl.Marker().setLngLat([-8, 39.6]).addTo(this.map)
+          new mapboxgl.Marker()
+            .setLngLat([element.long, element.lat])
+            .addTo(this.map)
         );
       }
     });

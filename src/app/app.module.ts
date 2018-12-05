@@ -15,7 +15,7 @@ import { AuthInterceptor } from './core/interceptors/auth-interceptor.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AuthInterceptor,
+    // AuthInterceptor,
     FormsModule,
     ReactiveFormsModule
   ],

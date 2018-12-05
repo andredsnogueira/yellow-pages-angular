@@ -1,76 +1,118 @@
 <div class="container-fluid">
-  <div class="row custom-row">
-    <div class="offset-sm-1 col-sm-5">
-      <div class="input-group my-5">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="name-addon">Name</span>
+  <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+    <div class="row custom-row">
+      <div class="offset-sm-1 col-sm-5">
+        <div class="input-group my-5">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="name-addon">Name</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            aria-label="Name"
+            aria-describedby="name-addon"
+            formControlName="name"
+          />
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Name"
-          aria-label="Name"
-          aria-describedby="name-addon"
-        />
+      </div>
+      <div class="col-sm-5">
+        <div class="input-group my-5">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="contact-addon">Contact</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Contact"
+            aria-label="Contact"
+            aria-describedby="contact-addon"
+            formControlName="contact"
+          />
+        </div>
+      </div>
+      <div class="offset-sm-1 col-sm-6">
+        <div class="input-group mb-5">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="address-addon">Address</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Address"
+            aria-label="Address"
+            aria-describedby="address-addon"
+            formControlName="address"
+          />
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="input-group mb-5">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="longitude-addon">Longitude</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Longitude"
+            aria-label="Longitude"
+            aria-describedby="longitude-addon"
+            formControlName="long"
+          />
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="input-group mb-5">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="latitude-addon">Latitude</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Latitude"
+            aria-label="Latitude"
+            aria-describedby="latitude-addon"
+            formControlName="lat"
+          />
+        </div>
+      </div>
+      <div class="offset-sm-1 col-sm-5">
+        <div class="input-group mb-5">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="postal-addon">Postal Code</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Postal Code"
+            aria-label="Postal"
+            aria-describedby="postal-addon"
+            formControlName="postalCode"
+          />
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="input-group mb-5">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="city-addon">City</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="City"
+            aria-label="City"
+            aria-describedby="city-addon"
+            formControlName="city"
+          />
+        </div>
+      </div>
+      <div class="offset-sm-9 col-sm-2">
+        <button class="btn btn-outline-success btn-block mb-5" type="submit">
+          Submit
+        </button>
       </div>
     </div>
-    <div class="col-sm-5">
-      <div class="input-group my-5">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="phone-addon">Phone</span>
-        </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Phone number"
-          aria-label="Phone"
-          aria-describedby="phone-addon"
-        />
-      </div>
-    </div>
-    <div class="offset-sm-1 col-sm-10">
-      <div class="input-group mb-5">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="address-addon">Address</span>
-        </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Address"
-          aria-label="Address"
-          aria-describedby="address-addon"
-        />
-      </div>
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-      <div class="input-group mb-5">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="postal-addon">Postal Code</span>
-        </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Postal Code"
-          aria-label="Postal"
-          aria-describedby="postal-addon"
-        />
-      </div>
-    </div>
-    <div class="col-sm-5">
-      <div class="input-group mb-5">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="parish-addon">Parish</span>
-        </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Parish"
-          aria-label="Parish"
-          aria-describedby="parish-addon"
-        />
-      </div>
-    </div>
-  </div>
+  </form>
   <div class="row">
     <div class="col-sm-12">
       <table class="table table-hover table-dark mt-4">
@@ -87,7 +129,9 @@
             <td>{{ company.name }}</td>
             <td>{{ company.contact }}</td>
             <td>{{ company.address }}</td>
-            <td>{{ company.id }}</td>
+            <td (click)="deleteCompany(company.id)">
+              <i class="fa fa-trash"></i>
+            </td>
           </tr>
         </tbody>
       </table>
